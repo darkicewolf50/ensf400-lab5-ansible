@@ -1,0 +1,12 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"yaml.schemas": {
+			"https://raw.githubusercontent.com/ansible/ansible-lint/main/src/ansiblelint/schemas/meta.json": "file:///workspaces/ensf400-lab5-ansible/hosts.yml"
+		}
+	}
+}
