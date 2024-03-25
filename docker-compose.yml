@@ -13,6 +13,7 @@ services:
       - "2223:2223"
     volumes:
       - ./secrets/id_rsa_container.pub:/root/.ssh/authorized_keys
+
   managedhost-app-2:
     build: 
       context: managed-host/alpine/app2
@@ -25,6 +26,7 @@ services:
       - "2224:2224"
     volumes:
       - ./secrets/id_rsa_container.pub:/root/.ssh/authorized_keys
+
   managedhost-app-3:
     build: 
       context: managed-host/alpine/app3
@@ -37,3 +39,14 @@ services:
       - "2225:2225"
     volumes:
       - ./secrets/id_rsa_container.pub:/root/.ssh/authorized_keys
+
+  loadbalancer:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+    depends_on:
+      - managedhost-app-1
+      - managedhost-app-2
+      - managedhost-app-3
